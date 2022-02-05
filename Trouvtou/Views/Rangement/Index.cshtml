@@ -1,0 +1,74 @@
+@model IEnumerable<Trouvtou.Models.Rangement>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Rangement</h1>
+
+<p>
+    <a asp-action="Create">Créer un nouveau rangement</a>
+</p>
+<form asp-controller="Rangement" asp-action="./" method="get">
+    <p>
+        Title: <input type="text" name="searchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.couleur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.descriptionDetail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.listObjet)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.couleur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descriptionDetail)
+            </td>
+            <td>
+                    @{
+                        foreach (var objet in item.listObjet)
+                        {
+                            @objet.nom <br />
+                        }
+                    }
+                </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Modifier</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+
+                @{
+                       if (item.listObjet.Count == 0)
+                        {
+                        <a asp-action="Delete" asp-route-id="@item.id">Supprimer</a>
+                        }
+                        else
+                        {
+                            <span style="color: #0000EE;" title="Il faut supprimer tous les objets dans le rangement pour supprimer le rangement">Supprimer</span>
+                        }              
+                    } 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

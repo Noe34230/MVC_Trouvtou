@@ -1,0 +1,54 @@
+@model Trouvtou.Models.Objet
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Objet</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.nom)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.nom)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.typeObjet)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.typeObjet)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.estConsultable)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.estConsultable)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.dateDernierRangement)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.dateDernierRangement)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.rangement)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.rangement.description)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
+    <a asp-action="Index">Retour à la liste des objets</a>
+</div>

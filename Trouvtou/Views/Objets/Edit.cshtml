@@ -1,0 +1,59 @@
+@model Trouvtou.Models.Objet
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Modifier</h1>
+
+<h4>Objet</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="id" />
+            <div class="form-group">
+                <label asp-for="nom" class="control-label"></label>
+                <input asp-for="nom" class="form-control" />
+                <span asp-validation-for="nom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="description" class="control-label"></label>
+                <input asp-for="description" class="form-control" />
+                <span asp-validation-for="description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="typeObjet" class="control-label"></label>
+                <input asp-for="typeObjet" class="form-control" />
+                <span asp-validation-for="typeObjet" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="estConsultable" /> @Html.DisplayNameFor(model => model.estConsultable)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="dateDernierRangement" class="control-label"></label>
+                <input asp-for="dateDernierRangement" class="form-control" />
+                <span asp-validation-for="dateDernierRangement" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="rangementid" class="control-label"></label>
+                <select asp-for="rangementid" class="form-control" asp-items="ViewBag.rangementid"></select>
+                <span asp-validation-for="rangementid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Retour à la liste des objets</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
